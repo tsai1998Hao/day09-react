@@ -26,6 +26,21 @@ export default function Day09_login() {
   const [permission_value, setPermission_value]=useState('3'); 
   /*新增員工資料*/
 
+
+
+
+/*編輯員工*/
+
+const [account_edit_input_val, setAccount_edit_input_val]=useState(''); 
+const [name_edit_input_val, setName_edit_input_val]=useState(''); 
+const [password_edit_input_val, setPassword_edit_input_val]=useState(''); 
+const [store_edit_input_val, setStore_edit_input_val]=useState(''); 
+const [permission_edit_input_val, setPermission_edit_input_val]=useState(''); 
+
+
+/*編輯員工*/
+
+
   /*載入所有員工資料*/
   useEffect(()=>{
     fetch('http://localhost/%e5%81%b7%e7%b7%b4/day09/day09_api01.php')
@@ -44,7 +59,7 @@ export default function Day09_login() {
 
 
 
-  /*編輯新增-員工*/
+  /*新增資料-員工*/
   function toggle_employee_insert(){           
     setInsert_emp_toggle_state(!insert_emp_toggle_state)
   }
@@ -89,16 +104,16 @@ export default function Day09_login() {
   .then(result=>console.log(result))
   location.reload();
   }
-  /*編輯新增-員工*/
+  /*新增資料-員工*/
   
 
 
   /*編輯資料-員工*/
 
 
-  /*顯示新增視窗-員工*/
+  /*顯示編輯視窗-員工*/
   const [edit_emp_toggle_state, setEdit_emp_toggle_state]=useState(false);
-  /*顯示新增視窗-員工*/
+  /*顯示編輯視窗-員工*/
 
   function account_edit(e){
     setAccount_value(e.target.value)
@@ -136,8 +151,16 @@ export default function Day09_login() {
       })
     })
     .then(res=>res.json())
-    .then(result=>console.log(result))
-  
+    .then(result=>{
+      console.log(result.id, result.chinese_name, result.employee_account, result.employee_password, result.modification_time, result.permission_level, result.storeid);
+      setAccount_edit_input_val(result.employee_account);
+      setName_edit_input_val(result.chinese_name);
+      setPassword_edit_input_val(result.employee_password);
+      setStore_edit_input_val(result.storeid);
+      setPermission_edit_input_val(result.permission_level)
+      return result;
+    })
+    .then(res=>console.log(res))
     }
     /*編輯資料-員工*/
     
@@ -264,18 +287,18 @@ export default function Day09_login() {
             <div className={styles.insert_account}>
               <label htmlFor="label_account">員工帳號:</label>
             </div>
-            <input className={styles.input_account} type="text" id="label_account" onChange={account_edit}/>
+            <input className={styles.input_account} type="text" id="label_account" onChange={account_edit} value={account_edit_input_val}/>
             <div className={styles.insert_name}>
-              <label htmlFor="label__name">名稱:</label>
+              <label htmlFor="label_name">名稱:</label>
             </div>
-            <input className={styles.input_name} type="text" id="label__name" onChange={name_edit}/>
+            <input className={styles.input_name} type="text" id="label_name" onChange={name_edit} value={name_edit_input_val}/>
             <div className={styles.insert_password}>
-              <label htmlFor="label__password">員工密碼:</label>
+              <label htmlFor="label_password">員工密碼:</label>
             </div>
-            <input className={styles.input_password} type="text" id="label__password" onChange={password_edit}/>                
+            <input className={styles.input_password} type="text" id="label_password" onChange={password_edit} value={password_edit_input_val}/>                
             <div className={styles.insert_store}>
               <label htmlFor="label_store">隸屬部門:</label>
-              <select className={styles.input_store} onChange={store_edit}>
+              <select className={styles.input_store} onChange={store_edit} value={store_edit_input_val}>
                 <option value="1">總公司</option>
                 <option value="2">技術部</option>
                 <option value="3">營業部</option>
@@ -285,7 +308,7 @@ export default function Day09_login() {
             </div>
             <div className={styles.insert_permission}>
               <label htmlFor="label_permission">權限名稱:</label>
-              <select className={styles.input_permission} id="label_permission" defaultValue="3" onSubmit={permission_edit}>
+              <select className={styles.input_permission} id="label_permission" defaultValue="3" onSubmit={permission_edit} value={permission_edit_input_val}>
                 <option value="1">老闆</option>
                 <option value="2">主管</option>
                 <option value="3">員工</option>
