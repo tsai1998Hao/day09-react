@@ -1,4 +1,17 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+解決後端php CORS問題
+// 解決CORS問題
+header('Access-Control-Allow-Origin: *'); 
+header('Access-Control-Allow-Methods: POST, GET, OPTIONS'); 
+header('Access-Control-Allow-Headers: Content-Type'); 
+// 解決CORS問題
+
+2024-08-04 編輯做到一半
+
+
+
+
+
+his is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
 

@@ -1,0 +1,135 @@
+
+.body{
+  background-color: gray;
+  height: 100vh;
+  display: flex;
+}
+
+.disappear{
+  display: none !important;
+}
+
+/*個人資訊*/
+  .details_block1{
+    border:5px solid white;
+    width: 350px;   /*連動1*/
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+  .member_details{
+    width: 300px;   /*連動1*/
+    height: 140px;
+  }
+  .detail_title{
+    font-size:30px;
+    font-weight:800;
+    text-align:center;
+    margin-top:10px;
+  }
+  .member_id{
+    font-size:24px;
+    margin-left:15px;
+    margin-top:10px;
+  }
+  .chinese_name{
+    font-size:24px;
+    margin-left:15px;
+    margin-top:10px;
+  }
+  .permission_level{
+    font-size:24px;
+    margin-left:15px;
+    margin-top:10px;
+  }
+  .show_my_data{
+    width: 100px;
+    margin-top:40px;
+  }
+  .store_areas{
+    border: 3px solid pink;
+    width: 300px;   /*連動1*/
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+
+
+  /*個人資訊---單位資料*/
+  .stores_information_areas{
+    width: 300px;
+  }
+  /*個人資訊---單位資料*/
+/*個人資訊*/
+
+
+
+/*顯示資料區*/
+.load_data{
+  border:5px solid white;
+  width: 800px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  margin-left:10px;
+
+}
+.setting_butts{
+  /* border: 3px solid red; */
+  width: 250px;
+  height: 34px;
+  display:flex;
+  /* flex-direction:column; */
+  align-items:center;
+  justify-content: center;
+  margin-top:30px;
+}
+.employees_butt{
+  margin-right:2px;
+}
+.permissions_butt{
+  margin-left:2px;
+}
+.scrollTable1{   /* 滾輪設定 */
+  border:2px solid black;
+  height: 495px;         
+  overflow: auto;
+}
+.my_talbe{
+  border-collapse: separate;
+  width: 700px;
+  /* border:2px solid green; */
+}
+.head_tr{
+  border: 1px solid white;
+  background-color: #384978;
+  align-items: center;
+  text-align: center;
+  line-height: 20px;
+  color:white;
+}
+.body_tr{
+  background-color: white;
+}
+
+
+
+
+/*顯示資料區*/
+
+
+/*新增資料區(非button)*/
+.insert_areas{
+  border:5px solid white;
+  margin-left:10px;
+  width: 250px;
+  height: 290px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+.insert_name, .insert_password, .insert_permission, .insert_but_div{
+  margin-top:10px;
+}
+/*新增資料區(非button)*/
