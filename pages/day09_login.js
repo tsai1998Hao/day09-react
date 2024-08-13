@@ -116,26 +116,50 @@ const [permission_edit_input_val, setPermission_edit_input_val]=useState('');
   /*顯示編輯視窗-員工*/
 
   function account_edit(e){
-    setAccount_value(e.target.value)
+    setAccount_edit_input_val(e.target.value)
     }
     function name_edit(e){
-    setName_value(e.target.value)
+    setName_edit_input_val(e.target.value)
     }
     function password_edit(e){
-    setPassword_value(e.target.value)
+      setPassword_edit_input_val(e.target.value)
     }
     function store_edit(e){
-    setStore_value(e.target.value)
+      setStore_edit_input_val(e.target.value)
     }
     function permission_edit(e){
-    setPermission_value(e.target.value)
+      setPermission_edit_input_val(e.target.value)
     }
     function edit_data(){
-      console.log(account_value);
-      console.log(name_value);
-      console.log(password_value);
-      console.log(store_value);
-      console.log(permission_value);
+      console.log(account_edit_input_val);
+      console.log(name_edit_input_val);
+      console.log(password_edit_input_val);
+      console.log(store_edit_input_val);
+      console.log(permission_edit_input_val);
+      fetch('http://localhost/%e5%81%b7%e7%b7%b4/day09/day09_api03.php',{
+        method:'POST',
+        header:{
+            'Content-Type':"application/json"  
+        },
+        body:JSON.stringify({ 
+          // 'id':data_id,
+          'employee_account':account_edit_input_val,
+          'chinese_name':name_edit_input_val,
+          'employee_password':password_edit_input_val,
+          'permission_level':permission_edit_input_val
+        })
+      .then(response=>response.json())
+      .then(data=>{
+          if(data.error){
+              console.log(data.error);
+          }
+          else{
+              console.log('更新的資料送出成功')
+          }
+      })
+
+      })
+  
     }
 
   function show_edit_data(id){
