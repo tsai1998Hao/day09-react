@@ -31,6 +31,7 @@ export default function Day09_login() {
 
 /*編輯員工*/
 
+const [id_edit_input_val, setId_edit_input_val]=useState(''); 
 const [account_edit_input_val, setAccount_edit_input_val]=useState(''); 
 const [name_edit_input_val, setName_edit_input_val]=useState(''); 
 const [password_edit_input_val, setPassword_edit_input_val]=useState(''); 
@@ -115,6 +116,10 @@ const [permission_edit_input_val, setPermission_edit_input_val]=useState('');
   const [edit_emp_toggle_state, setEdit_emp_toggle_state]=useState(false);
   /*顯示編輯視窗-員工*/
 
+  function id_edit(e){
+    setId_edit_input_val(e.target.value)
+  }
+
   function account_edit(e){
     setAccount_edit_input_val(e.target.value)
     }
@@ -138,16 +143,17 @@ const [permission_edit_input_val, setPermission_edit_input_val]=useState('');
       console.log(permission_edit_input_val);
       fetch('http://localhost/%e5%81%b7%e7%b7%b4/day09/day09_api03.php',{
         method:'POST',
-        header:{
+        headers:{
             'Content-Type':"application/json"  
         },
         body:JSON.stringify({ 
-          // 'id':data_id,
+          'id':id_edit_input_val,
           'employee_account':account_edit_input_val,
           'chinese_name':name_edit_input_val,
           'employee_password':password_edit_input_val,
           'permission_level':permission_edit_input_val
         })
+      })
       .then(response=>response.json())
       .then(data=>{
           if(data.error){
@@ -158,7 +164,7 @@ const [permission_edit_input_val, setPermission_edit_input_val]=useState('');
           }
       })
 
-      })
+      // })
   
     }
 
@@ -167,7 +173,7 @@ const [permission_edit_input_val, setPermission_edit_input_val]=useState('');
     console.log(id);
     fetch('http://localhost/%e5%81%b7%e7%b7%b4/day09/day09_api03.php',{
       method:'POST',
-      header:{
+      headers:{
           'Content-Type':"application/json"  
       },
       body:JSON.stringify({ 
@@ -176,7 +182,8 @@ const [permission_edit_input_val, setPermission_edit_input_val]=useState('');
     })
     .then(res=>res.json())
     .then(result=>{
-      console.log(result.id, result.chinese_name, result.employee_account, result.employee_password, result.modification_time, result.permission_level, result.storeid);
+      // console.log(result.id, result.chinese_name, result.employee_account, result.employee_password, result.modification_time, result.permission_level, result.storeid);
+      setId_edit_input_val(result.id);
       setAccount_edit_input_val(result.employee_account);
       setName_edit_input_val(result.chinese_name);
       setPassword_edit_input_val(result.employee_password);
@@ -308,6 +315,13 @@ const [permission_edit_input_val, setPermission_edit_input_val]=useState('');
         {edit_emp_toggle_state && (
         <div className={styles.insert_areas}>
           <div className={styles.input_area}>
+          
+            <div>
+              <label >員工id:</label>
+              <input onChange={id_edit} value={id_edit_input_val} disabled></input>
+            </div>
+
+
             <div className={styles.insert_account}>
               <label htmlFor="label_account">員工帳號:</label>
             </div>
