@@ -212,6 +212,8 @@ const [permission_edit_input_val, setPermission_edit_input_val]=useState('');
             "id":id,
           })
         })
+        /*確認後台有撰寫程式碼來回傳res給前端，就不會報錯
+        說回應不符合JSON格式了!*/
         .then(res=>res.json())
         .then(data=>{
           if(data.error){
