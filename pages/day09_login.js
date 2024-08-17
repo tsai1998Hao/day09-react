@@ -195,6 +195,40 @@ const [permission_edit_input_val, setPermission_edit_input_val]=useState('');
     }
     /*編輯資料-員工*/
     
+
+    /*刪除資料-員工*/
+
+    function delete_data(id){
+      console.log(id);
+      let confirmed=confirm("確定要刪除嗎?");
+      if(confirmed){
+        fetch('http://localhost/%e5%81%b7%e7%b7%b4/day09/day09_api04.php',{
+          
+          method:"POST",
+          headers:{
+            'Content-Type':"application/json"  
+          },
+          body:JSON.stringify({
+            "id":id,
+          })
+        })
+        .then(res=>res.json())
+        .then(data=>{
+          if(data.error){
+            console.log(data.error);
+          }
+          else{
+            console.log('刪除資料成功')
+          }
+        })
+      }
+  
+    }
+
+    /*刪除資料-員工*/
+
+
+
   return (
     <>
       <Head>
@@ -255,7 +289,7 @@ const [permission_edit_input_val, setPermission_edit_input_val]=useState('');
                   <td>{el.employee_password}</td>
                   <td>{el.permission_level}</td>
                   <td>{el.create_time}</td>
-                  <td><FaTrash /></td>
+                  <td onClick={()=>delete_data(el.id)}><FaTrash /></td>
                 </tr>
               ))}
               </tbody>
