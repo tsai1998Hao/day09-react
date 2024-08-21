@@ -1,10 +1,10 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
-// 创建一个 ThemeContext
+// 創建一個 ThemeContext
 const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
-  const [theme, setTheme] = useState('light'); // 默认主题是 'light'
+  const [theme, setTheme] = useState('light'); // 初始主題為 'light'
 
   const toggleTheme = () => {
     setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
