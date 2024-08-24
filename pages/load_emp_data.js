@@ -4,7 +4,7 @@ import { FaPen } from "react-icons/fa";
 import { FaTrash } from "react-icons/fa";
 import styles from "@/styles/load_emp_data.module.css";
 
-export default function Load_emp_data() {
+export default function Load_emp_data({send_emp_data}) {
   /*載入所有員工資料*/
   const [employees, setEmployees]=useState([]); 
   /*載入所有員工資料*/
@@ -73,7 +73,10 @@ const [permission_edit_input_val, setPermission_edit_input_val]=useState('');
     //   setStore_edit_input_val(result.storeid);
     //   setPermission_edit_input_val(result.permission_level)
     //   return result;
-    console.log(result)
+    // console.log(result);
+    if(send_emp_data){
+        send_emp_data(result)
+    }
     })
     // .then(res=>console.log(res))
     // }

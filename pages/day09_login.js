@@ -116,7 +116,9 @@ const [permission_edit_input_val, setPermission_edit_input_val]=useState('');
 
 
   /*顯示編輯視窗-員工*/
-  const [edit_emp_toggle_state, setEdit_emp_toggle_state]=useState(false);
+  // const [edit_emp_toggle_state, setEdit_emp_toggle_state]=useState(false);
+  const [edit_emp_toggle_state, setEdit_emp_toggle_state]=useState(true);
+
   /*顯示編輯視窗-員工*/
 
   function id_edit(e){
@@ -234,6 +236,23 @@ const [permission_edit_input_val, setPermission_edit_input_val]=useState('');
 
 
 
+
+
+    const take_emp_data=(dataa)=>{
+
+      setId_edit_input_val(dataa.id);
+      setAccount_edit_input_val(dataa.employee_account);
+      setName_edit_input_val(dataa.chinese_name);
+      setPassword_edit_input_val(dataa.employee_password);
+      setStore_edit_input_val(dataa.storeid);
+      setPermission_edit_input_val(dataa.permission_level)
+
+
+    }
+
+
+
+
   return (
     <>
       <Head>
@@ -270,7 +289,7 @@ const [permission_edit_input_val, setPermission_edit_input_val]=useState('');
 
 
           {/* <!-- 資料顯示-員工清單 --> */}
-          <div className={styles.scrollTable1}>
+          {/* <div className={styles.scrollTable1}>
             <table className={styles.my_talbe}>
               <thead className={styles.table_head}>
                 <tr className={styles.head_tr}>
@@ -299,9 +318,9 @@ const [permission_edit_input_val, setPermission_edit_input_val]=useState('');
               ))}
               </tbody>
             </table>
-          </div>
+          </div> */}
 
-          <Load_emp_data></Load_emp_data>
+          <Load_emp_data send_emp_data={take_emp_data} />
 
 
           {/* <!-- 資料顯示-員工清單 --> */}
