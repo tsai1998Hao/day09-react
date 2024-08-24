@@ -5,9 +5,6 @@ import { useEffect } from 'react';
 import { FaPen } from "react-icons/fa";
 import { FaTrash } from "react-icons/fa";
 
-import Load_emp_data from "@/pages/load_emp_data"
-
-
 export default function Day09_login() {
   /*載入所有員工資料*/
   const [employees, setEmployees]=useState([]); 
@@ -300,10 +297,6 @@ const [permission_edit_input_val, setPermission_edit_input_val]=useState('');
               </tbody>
             </table>
           </div>
-
-          <Load_emp_data></Load_emp_data>
-
-
           {/* <!-- 資料顯示-員工清單 --> */}
 
         </div>

@@ -1,0 +1,39 @@
+.disappear{
+  display: none !important;
+}
+
+
+
+
+/*顯示資料區*/
+.load_data{
+  border:5px solid white;
+  width: 800px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  margin-left:10px;
+}
+.scrollTable1{   /* 滾輪設定 */
+  border:2px solid black;
+  height: 495px;         
+  overflow: auto;
+}
+.my_talbe{
+  border-collapse: separate;
+  width: 700px;
+  /* border:2px solid green; */
+}
+.head_tr{
+  border: 1px solid white;
+  background-color: #384978;
+  align-items: center;
+  text-align: center;
+  line-height: 20px;
+  color:white;
+}
+.body_tr{
+  background-color: white;
+}
+/*顯示資料區*/
+
