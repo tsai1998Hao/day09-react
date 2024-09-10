@@ -93,7 +93,7 @@ const [permission_edit_input_val, setPermission_edit_input_val]=useState('');
 
   fetch('http://localhost/%e5%81%b7%e7%b7%b4/day09/day09_api02.php',{
     method:'POST',
-    header:{
+    headers:{
         'Content-Type':"application/json"  
     },
     body:JSON.stringify({ 
@@ -356,10 +356,10 @@ const [permission_edit_input_val, setPermission_edit_input_val]=useState('');
             </div>
             <div className={styles.insert_permission}>
               <label htmlFor="label_permission">權限名稱:</label>
-              <select className={styles.input_permission} id="label_permission" defaultValue="3" onSubmit={permission_insert}>
+              <select className={styles.input_permission} id="label_permission" onChange={permission_insert}>
                 <option value="1">老闆</option>
                 <option value="2">主管</option>
-                <option value="3">員工</option>
+                <option value="3" selected>員工</option>
                 <option value="4">路人</option>
               </select>
             </div>
@@ -408,7 +408,7 @@ const [permission_edit_input_val, setPermission_edit_input_val]=useState('');
             </div>
             <div className={styles.insert_permission}>
               <label htmlFor="label_permission">權限名稱:</label>
-              <select className={styles.input_permission} id="label_permission" defaultValue="3" onSubmit={permission_edit} value={permission_edit_input_val}>
+              <select className={styles.input_permission} id="label_permission" onChange={permission_edit} value={permission_edit_input_val}>
                 <option value="1">老闆</option>
                 <option value="2">主管</option>
                 <option value="3">員工</option>
