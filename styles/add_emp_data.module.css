@@ -1,0 +1,15 @@
+/*新增資料區(非button)*/
+.insert_areas{
+    border:5px solid white;
+    margin-left:10px;
+    width: 250px;
+    height: 290px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+  }
+  .insert_name, .insert_password, .insert_permission, .insert_but_div{
+    margin-top:10px;
+  }
+  

@@ -4,10 +4,14 @@ import { FaPen } from "react-icons/fa";
 import { FaTrash } from "react-icons/fa";
 import styles from "@/styles/load_emp_data.module.css";
 
-export default function Load_emp_data({send_emp_data,  edit_toggle}) {
+export default function Load_emp_data({send_emp_data}) {
   /*載入所有員工資料*/
   const [employees, setEmployees]=useState([]); 
   /*載入所有員工資料*/
+
+
+  const [edit_emp_toggle_state, setEdit_emp_toggle_state]=useState(false);
+
 
 
 
@@ -23,32 +27,53 @@ export default function Load_emp_data({send_emp_data,  edit_toggle}) {
     })
   },[])
   /*載入所有員工資料*/
+  // function toggle_employee_insert(){           
+  //   setInsert_emp_toggle_state(!insert_emp_toggle_state)
+  // }
 
 
-  /*載入編輯資料*/
-  // 點擊某個按鈕就會調用父組件傳遞的 edit_toggle函數
-    const show_edit_data = (id) => {
-      edit_toggle();
-      // setEdit_emp_toggle_state(!edit_emp_toggle_state);
-      console.log(id);
-      fetch('http://localhost/%e5%81%b7%e7%b7%b4/day09/day09_api03.php',{
-        method:'POST',
-        headers:{
-            'Content-Type':"application/json"  
-        },
-        body:JSON.stringify({ 
-            "id":id,
-        })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+//傳出編輯資料
+  function show_edit_data(id){
+    setEdit_emp_toggle_state(!edit_emp_toggle_state);
+    console.log(id);
+    fetch('http://localhost/%e5%81%b7%e7%b7%b4/day09/day09_api03.php',{
+      method:'POST',
+      headers:{
+          'Content-Type':"application/json"  
+      },
+      body:JSON.stringify({ 
+          "id":id,
       })
-      .then(res=>res.json())
-      .then(result=>{
-        if(send_emp_data){
-            send_emp_data(result)
-        }
-      })
-    }
-  /*載入編輯資料*/
-
+    })
+    .then(res=>res.json())
+    .then(result=>{
+      if(send_emp_data){
+          send_emp_data(result)
+      }
+    })
+  }
 
 
     /*刪除資料-員工*/

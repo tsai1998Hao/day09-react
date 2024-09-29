@@ -119,7 +119,7 @@
 
 
 /*新增資料區(非button)*/
-.insert_areas{
+/* .insert_areas{
   border:5px solid white;
   margin-left:10px;
   width: 250px;
@@ -131,5 +131,5 @@
 }
 .insert_name, .insert_password, .insert_permission, .insert_but_div{
   margin-top:10px;
-}
+} */
 /*新增資料區(非button)*/
