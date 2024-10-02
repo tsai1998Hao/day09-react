@@ -10,25 +10,6 @@ import Eddit_emp_data from "@/pages/eddit_emp_data";
 
 export default function Day09_login() {
 
-
-
-  const [selectedEmployee, setSelectedEmployee] = useState(null);
-
-
-  // const sendEmpData = (data) => {
-  //   setSelectedEmployee(data);
-  //   setEditToggle(true); 
-  // };
-
-  // const toggleEdit = () => {
-  //   setEditToggle(!editToggle);
-  // };  
-
-
-
-
-
-
   /*載入所有員工資料*/
   const [employees, setEmployees]=useState([]); 
   /*載入所有員工資料*/
@@ -43,7 +24,7 @@ export default function Day09_login() {
 
 
   /*顯示編輯視窗-員工*/
-  const [eddit_emp_toggle_state, setEddit_emp_toggle_state]=useState(false);
+  const [eddit_emp_toggle_state, setEddit_emp_toggle_state]=useState(true);
   // 接收子組件-load_emp_data傳來的edit開關狀態
   const handle_eddit_toggle_state = () => {
     setEddit_emp_toggle_state(!eddit_emp_toggle_state);
@@ -159,11 +140,7 @@ export default function Day09_login() {
       setName_edit_input_val(dataa.chinese_name);
       setPassword_edit_input_val(dataa.employee_password);
       setStore_edit_input_val(dataa.storeid);
-      setPermission_edit_input_val(dataa.permission_level);
-
-
-      setSelectedEmployee(dataa);
-      setEddit_emp_toggle_state(true);
+      setPermission_edit_input_val(dataa.permission_level)
     }
 /*編輯員工*/
 
@@ -216,9 +193,9 @@ export default function Day09_login() {
 
 
         {/* <!-- 資料編輯-員工 --> */}
-        {eddit_emp_toggle_state && (<Eddit_emp_data employeeData={selectedEmployee}/>)}
+        {eddit_emp_toggle_state && (<Eddit_emp_data/>)}
 
-        {/* {eddit_emp_toggle_state && (
+        {eddit_emp_toggle_state && (
         <div className={styles.eddit_areas}>
           <div className={styles.input_area}>
           
@@ -262,9 +239,10 @@ export default function Day09_login() {
             </div>
             <div className={styles.eddit_but_div}>
               <button onClick={edit_data}>送出</button>
+              {/*<button onclick=toggle_insert()>取消</button> */}
             </div>
         </div>
-        )} */}
+        )}
         {/* <!-- 資料編輯-員工 --> */}
 
       </div>

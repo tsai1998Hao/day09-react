@@ -1,55 +1,57 @@
-import React, { useState, useEffect, useCallback } from 'react';
+// import React, { useState } from 'react';
 import Head from "next/head";
 import styles from "@/styles/day09_login.module.css";
+// import { useEffect } from 'react';
 
 
 import Load_emp_data from "@/pages/load_emp_data";
 import Add_emp_data from "@/pages/add_emp_data";
 import Eddit_emp_data from "@/pages/eddit_emp_data";
 
+import React, { useState, useEffect, useCallback } from 'react';
 
 export default function Day09_login() {
-
-
-
-  const [selectedEmployee, setSelectedEmployee] = useState(null);
-
-
-  // const sendEmpData = (data) => {
-  //   setSelectedEmployee(data);
-  //   setEditToggle(true); 
-  // };
-
-  // const toggleEdit = () => {
-  //   setEditToggle(!editToggle);
-  // };  
-
-
-
-
-
 
   /*載入所有員工資料*/
   const [employees, setEmployees]=useState([]); 
   /*載入所有員工資料*/
 
-
   /*顯示新增視窗-員工*/
   const [insert_emp_toggle_state, setInsert_emp_toggle_state]=useState(false);
+
   function toggle_employee_insert(){           
     setInsert_emp_toggle_state(!insert_emp_toggle_state)
   }
   /*顯示新增視窗-員工*/
 
 
+
+
   /*顯示編輯視窗-員工*/
-  const [eddit_emp_toggle_state, setEddit_emp_toggle_state]=useState(false);
+  const [eddit_emp_toggle_state, setEddit_emp_toggle_state]=useState(true);
+
   // 接收子組件-load_emp_data傳來的edit開關狀態
   const handle_eddit_toggle_state = () => {
     setEddit_emp_toggle_state(!eddit_emp_toggle_state);
   };
   // 接收子組件-load_emp_data傳來的edit開關狀態
+
+
   /*顯示編輯視窗-員工*/
+
+
+
+/*編輯員工*/
+
+const [id_edit_input_val, setId_edit_input_val]=useState(''); 
+const [account_edit_input_val, setAccount_edit_input_val]=useState(''); 
+const [name_edit_input_val, setName_edit_input_val]=useState(''); 
+const [password_edit_input_val, setPassword_edit_input_val]=useState(''); 
+const [store_edit_input_val, setStore_edit_input_val]=useState(''); 
+const [permission_edit_input_val, setPermission_edit_input_val]=useState(''); 
+
+
+/*編輯員工*/
 
 
   /*載入所有員工資料*/
@@ -67,14 +69,19 @@ export default function Day09_login() {
   /*載入所有員工資料*/
 
 
+
+
+
+
+
+  
+  
+
+
   /*編輯資料-員工*/
 
-  const [id_edit_input_val, setId_edit_input_val]=useState(''); 
-  const [account_edit_input_val, setAccount_edit_input_val]=useState(''); 
-  const [name_edit_input_val, setName_edit_input_val]=useState(''); 
-  const [password_edit_input_val, setPassword_edit_input_val]=useState(''); 
-  const [store_edit_input_val, setStore_edit_input_val]=useState(''); 
-  const [permission_edit_input_val, setPermission_edit_input_val]=useState(''); 
+
+
 
   function id_edit(e){
     setId_edit_input_val(e.target.value)
@@ -153,19 +160,24 @@ export default function Day09_login() {
   //   })
   //   .then(res=>console.log(res))
   //   }
+    /*編輯資料-員工*/
+    
+
+
+
+
+
+
     const take_emp_data=(dataa)=>{
+
       setId_edit_input_val(dataa.id);
       setAccount_edit_input_val(dataa.employee_account);
       setName_edit_input_val(dataa.chinese_name);
       setPassword_edit_input_val(dataa.employee_password);
       setStore_edit_input_val(dataa.storeid);
-      setPermission_edit_input_val(dataa.permission_level);
-
-
-      setSelectedEmployee(dataa);
-      setEddit_emp_toggle_state(true);
+      setPermission_edit_input_val(dataa.permission_level)
     }
-/*編輯員工*/
+
 
 
 
@@ -202,9 +214,44 @@ export default function Day09_login() {
             <button className={styles.create_butt} onClick={toggle_employee_insert}>新增員工</button>
           </div>
 
+
+
           {/* <!-- 資料顯示-員工清單 --> */}
+          {/* <div className={styles.scrollTable1}>
+            <table className={styles.my_talbe}>
+              <thead className={styles.table_head}>
+                <tr className={styles.head_tr}>
+                  <th></th>
+                    <th>員工編號</th>
+                    <th>員工帳號</th>
+                    <th>名稱</th>
+                    <th>員工密碼</th>
+                    <th>權限名稱</th>
+                    <th>修改時間</th>
+                    <th></th>
+                </tr>
+              </thead>
+              <tbody className={styles.table_body}>
+              {employees.map(el=>(
+                <tr className={styles.body_tr} key={el.id}>
+                  <td onClick={()=>show_edit_data(el.id)}><FaPen /></td>
+                  <td>{el.id}</td>
+                  <td>{el.employee_account}</td>
+                  <td>{el.chinese_name}</td>
+                  <td>{el.employee_password}</td>
+                  <td>{el.permission_level}</td>
+                  <td>{el.create_time}</td>
+                  <td onClick={()=>delete_data(el.id)}><FaTrash /></td>
+                </tr>
+              ))}
+              </tbody>
+            </table>
+          </div> */}
+
           <Load_emp_data send_emp_data={take_emp_data}  eddit_toggle={handle_eddit_toggle_state} />
-          {/* <!-- 資料顯示-員工清單 --> */}
+
+
+        {/* <!-- 資料顯示-員工清單 --> */}
 
         </div>
         {/* <!-- 資料顯示-員工清單與buttoms --> */}
@@ -216,9 +263,9 @@ export default function Day09_login() {
 
 
         {/* <!-- 資料編輯-員工 --> */}
-        {eddit_emp_toggle_state && (<Eddit_emp_data employeeData={selectedEmployee}/>)}
+        {eddit_emp_toggle_state && (<Eddit_emp_data/>)}
 
-        {/* {eddit_emp_toggle_state && (
+        {eddit_emp_toggle_state && (
         <div className={styles.eddit_areas}>
           <div className={styles.input_area}>
           
@@ -262,9 +309,10 @@ export default function Day09_login() {
             </div>
             <div className={styles.eddit_but_div}>
               <button onClick={edit_data}>送出</button>
+              {/*<button onclick=toggle_insert()>取消</button> */}
             </div>
         </div>
-        )} */}
+        )}
         {/* <!-- 資料編輯-員工 --> */}
 
       </div>

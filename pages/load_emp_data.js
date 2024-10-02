@@ -4,12 +4,10 @@ import { FaPen } from "react-icons/fa";
 import { FaTrash } from "react-icons/fa";
 import styles from "@/styles/load_emp_data.module.css";
 
-export default function Load_emp_data({send_emp_data,  edit_toggle}) {
+export default function Load_emp_data({send_emp_data, eddit_toggle}) {
   /*載入所有員工資料*/
   const [employees, setEmployees]=useState([]); 
   /*載入所有員工資料*/
-
-
 
   /*載入所有員工資料*/
   useEffect(()=>{
@@ -26,9 +24,9 @@ export default function Load_emp_data({send_emp_data,  edit_toggle}) {
 
 
   /*載入編輯資料*/
-  // 點擊某個按鈕就會調用父組件傳遞的 edit_toggle函數
+  // 點擊某個按鈕就會調用父組件傳遞的 eddit_toggle函數
     const show_edit_data = (id) => {
-      edit_toggle();
+      eddit_toggle();
       // setEdit_emp_toggle_state(!edit_emp_toggle_state);
       console.log(id);
       fetch('http://localhost/%e5%81%b7%e7%b7%b4/day09/day09_api03.php',{
@@ -78,14 +76,8 @@ export default function Load_emp_data({send_emp_data,  edit_toggle}) {
           }
         })
       }
-  
     }
     /*刪除資料-員工*/
-
-
-
-
-
 
 
   return (

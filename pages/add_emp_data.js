@@ -5,7 +5,6 @@ import React, { useState, useEffect, useCallback } from 'react';
 export default function Add_emp_data() {
 
   /*新增員工資料*/
-
   const [account_value, setAccount_value]=useState(''); 
   const [name_value, setName_value]=useState(''); 
   const [password_value, setPassword_value]=useState(''); 

@@ -118,8 +118,8 @@
 /*顯示資料區*/
 
 
-/*新增資料區(非button)*/
-/* .insert_areas{
+/*編輯資料區(非button)*/
+.eddit_areas{
   border:5px solid white;
   margin-left:10px;
   width: 250px;
@@ -129,7 +129,7 @@
   justify-content:center;
   align-items:center;
 }
-.insert_name, .insert_password, .insert_permission, .insert_but_div{
+.eddit_name, .eddit_password, .eddit_permission, .eddit_but_div{
   margin-top:10px;
-} */
+}
 /*新增資料區(非button)*/
