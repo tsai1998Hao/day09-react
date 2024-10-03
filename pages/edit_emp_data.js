@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import styles from "@/styles/eddit_emp_data.module.css";
+import styles from "@/styles/edit_emp_data.module.css";
 
-export default function Eddit_emp_data({ employeeData }) {
+export default function Edit_emp_data({ employeeData }) {
 
   const [id_edit_input_val, setId_edit_input_val]=useState(''); 
   const [account_edit_input_val, setAccount_edit_input_val]=useState(''); 
@@ -10,13 +10,6 @@ export default function Eddit_emp_data({ employeeData }) {
   const [store_edit_input_val, setStore_edit_input_val]=useState(''); 
   const [permission_edit_input_val, setPermission_edit_input_val]=useState(''); 
   const [edit_emp_toggle_state, setEdit_emp_toggle_state] = useState(false);
-
-
-
-
-
-
-
 
   function id_edit(e){
     setId_edit_input_val(e.target.value)
