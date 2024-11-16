@@ -34,7 +34,7 @@ export default function Add_emp_data() {
         console.log(password_value);
         console.log(store_value);
         console.log(permission_value);
-        console.log("請求一次");
+        // console.log("請求一次");
     
         fetch('http://localhost/%e5%81%b7%e7%b7%b4/day09/day09_api02.php',{
           method:'POST',
