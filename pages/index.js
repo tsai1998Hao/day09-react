@@ -31,7 +31,13 @@ const password_change=(e)=>{
     .then(data=>{
       if(data.message === '登入成功'){
         console.log('登入成功',data);
-        window.location.href = "http://localhost:3000/day09_login";
+
+        //寫法1
+        // window.location.href = "http://localhost:3000/day09_login";
+
+        //寫法2
+        history.pushState(null, "", "/day09_login");
+        window.location.href = window.location.pathname;
       }
       else{
         alert('帳號或密碼錯誤');
